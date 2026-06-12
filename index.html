@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MINDMATE-AI</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header class="hero">
+    <h1>🧠 MindMate AI</h1>
+    <h3>Intelligent Wellness & Productivity Platform</h3>
+    <p>
+        Monitor stress, track habits, improve focus,
+        and achieve your goals with personalized insights.
+    </p>
+</header>
+<div class="stats">
+
+    <div class="stat-card">
+        <h3>😊 Mood</h3>
+        <p id="currentMood">--</p>
+    </div>
+
+    <div class="stat-card">
+        <h3>📋 Tasks</h3>
+        <p id="taskCount">0</p>
+    </div>
+
+    <div class="stat-card">
+        <h3>🔥 Streak</h3>
+        <p id="streak">0</p>
+    </div>
+
+    <div class="stat-card">
+        <h3>🏆 Score</h3>
+        <p id="scoreDisplay">0%</p>
+    </div>
+
+</div>
+
+<div class="card">
+    <h2>🤖 AI Wellness Insights</h2>
+
+    <div class="insight-box">
+        <p id="aiInsight">
+            Complete your habits today to improve your wellness score.
+        </p>
+    </div>
+</div>
+
+<div class="card">
+
+    <h2>📊 Today's Summary</h2>
+
+    <div class="summary-grid">
+
+        <div>
+            <h4>Mood</h4>
+            <p id="summaryMood">Happy</p>
+        </div>
+
+        <div>
+            <h4>Stress</h4>
+            <p id="summaryStress">Moderate</p>
+        </div>
+
+        <div>
+            <h4>Habits</h4>
+            <p id="summaryHabit">0%</p>
+        </div>
+
+        <div>
+            <h4>Tasks</h4>
+            <p id="summaryTasks">0</p>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="card">
+    <h2>👤 Profile</h2>
+
+    <input type="text" id="username" placeholder="Enter Your Name">
+
+    <select id="role">
+        <option>Student</option>
+        <option>Employee</option>
+    </select>
+
+    <button onclick="saveProfile()">
+        Save Profile
+    </button>
+</div>
+
+<div class="card">
+    <h2>😊 Mood Tracker</h2>
+
+    <select id="mood">
+        <option>Happy</option>
+        <option>Neutral</option>
+        <option>Sad</option>
+        <option>Stressed</option>
+        <option>Excited</option>
+    </select>
+
+    <button onclick="saveMood()">
+        Save Mood
+    </button>
+</div>
+
+<div class="card">
+    <h2>📊 Stress Level</h2>
+
+    <input type="range"
+           min="1"
+           max="10"
+           value="5"
+           id="stress">
+
+    <p id="stressValue">5</p>
+</div>
+
+
+<div class="card">
+    <h2>✅ Task Manager</h2>
+
+    <input type="text"
+           id="taskInput"
+           placeholder="Enter Task">
+
+    <button onclick="addTask()">
+        Add Task
+    </button>
+
+    <ul id="taskList"></ul>
+</div>
+
+<div class="card">
+
+    <h2>🎯 Daily Goals</h2>
+
+    <input type="text"
+           id="goalInput"
+           placeholder="Set today's goal">
+
+    <button onclick="addGoal()">
+        Add Goal
+    </button>
+    <ul id="goalList"></ul>
+
+</div>
+
+<div class="card">
+
+    <h2>💧 Habit Tracker</h2>
+
+    <div class="habit-row">
+        <input type="checkbox" class="habit">
+        <span>Drink Water</span>
+    </div>
+
+    <div class="habit-row">
+        <input type="checkbox" class="habit">
+        <span>Exercise</span>
+    </div>
+
+    <div class="habit-row">
+        <input type="checkbox" class="habit">
+        <span>Sleep 8 Hours</span>
+    </div>
+
+    <div class="habit-row">
+        <input type="checkbox" class="habit">
+        <span>Meditation</span>
+    </div>
+
+    <button onclick="calculateHabit()">
+        Check Progress
+    </button>
+
+    <p id="habitResult"></p>
+
+</div>
+
+<div class="card">
+    <h2>⏳ Focus Timer (Pomodoro)</h2>
+    <h2 id="timer">25:00</h2>
+    <button onclick="startTimer()">
+        Start
+    </button>
+    <button onclick="resetTimer()">
+        Reset
+    </button>
+</div>
+
+<div class="card">
+    <h2>🧘 Guided Breathing</h2>
+    <div class="breathing-circle"></div>
+    <p>
+        Inhale • Hold • Exhale
+    </p>
+</div>
+
+<div class="card">
+    <h2>🌟 Motivation Center</h2>
+    <button onclick="showQuote()">
+        Get Motivation
+    </button>
+    <p id="quote"></p>
+
+</div>
+
+<div class="card">
+
+    <h2>📔 Reflection Journal</h2>
+    <textarea id="journal"
+              rows="5"
+              placeholder="Write your thoughts..."></textarea>
+    <button onclick="saveJournal()">
+        Save Journal
+    </button>
+
+</div>
+
+<div class="card">
+
+    <h2>🏆 Wellness Score</h2>
+    <div class="circle">
+        <span id="wellnessScore">
+            0%
+        </span>
+    </div>
+
+</div>
+
+<div class="card">
+    <h2> Achievement Badges</h2>
+    <div class="badge">🏆 First Login</div>
+    <div class="badge">💧 Hydration Hero</div>
+    <div class="badge">📚 Productivity Star</div>
+    <div class="badge">🧘 Wellness Champion</div>
+</div>
+
+<div class="card">
+    <h2>📈 Wellness Analytics</h2>
+    <canvas id="moodChart"></canvas>
+</div>
+
+<button onclick="window.print()"> Download Report</button>
+
+<script src="script.js"></script>
+</body>
+</html>
+
